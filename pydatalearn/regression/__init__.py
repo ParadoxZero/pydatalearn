@@ -21,27 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import math
 
 
-def mean(number_list):
-    return sum(number_list) / len(number_list)
 
-
-def standardDeviation(number_list):
-    avg = mean(number_list)
-    variance = sum([pow(x - avg, 2) for x in number_list]) / float(len(number_list) - 1)
-    return math.sqrt(variance)
-
-
-def differentiate(func, h=0.00001):
-    """
-    Error prone after 2nd degree
-    :param func: function to differentiate
-    :param h: @type float, step size
-    :return: function
-    """
-    def derivative(x):
-        return (func(x + h) - func(x)) / h
-
-    return derivative

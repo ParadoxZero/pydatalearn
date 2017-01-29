@@ -26,6 +26,8 @@ import csv
 import random
 import math
 
+from pydatalearn import mean, standardDeviation
+
 
 def loadCSV(filename):
     lines = csv.reader(open(filename, 'r'))
@@ -52,16 +54,6 @@ def separateByClass(data_set):
         else:
             separated[vector[-1]] = [vector, ]
     return separated
-
-
-def mean(number_list):
-    return sum(number_list) / len(number_list)
-
-
-def standardDeviation(number_list):
-    avg = mean(number_list)
-    variance = sum([pow(x - avg, 2) for x in number_list]) / float(len(number_list) - 1)
-    return math.sqrt(variance)
 
 
 def summarize(dataset):

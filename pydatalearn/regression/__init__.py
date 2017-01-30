@@ -22,5 +22,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import numpy as np
 
 
+def cost_function(X, Y, *theta):
+    """
+    Find out the difference between the values from parameter and actual
+    :param X: Input matrix
+    :param Y: Actual output Matrix
+    :param theta: Fitted parameter that's needed to be tested
+    :return: Cost/error @float
+    """
+    X = np.matrix(X)
+    Y = np.matrix(Y)
+    theta = np.matrix(theta).transpose()
+    prediction = X * theta
+    # print(prediction)
+    error = 0
+    for i in range(len(prediction)):
+        error += (Y.item(i, 0) - prediction.item(i, 0)) ** 2
+    error = error / (2 * len(Y))
+    # print("Cost: ",error)
+    return error

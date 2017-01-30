@@ -29,23 +29,6 @@ import math
 from pydatalearn import mean, standardDeviation
 
 
-def loadCSV(filename):
-    lines = csv.reader(open(filename, 'r'))
-    data_set = []
-    for line in lines:
-        data_set.append([float(x) for x in line])
-    return data_set
-
-
-def splitDataSet(data_set, ratio):
-    data_set = list(data_set)
-    train_size = int(len(data_set) * ratio)
-    training_set = []
-    for _ in range(train_size):
-        training_set.append(data_set.pop(data_set.index(random.choice(data_set))))
-    return training_set, data_set
-
-
 def separateByClass(data_set):
     separated = {}
     for vector in data_set:

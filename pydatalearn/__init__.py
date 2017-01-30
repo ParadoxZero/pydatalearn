@@ -21,7 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import csv
 import math
+import random
 
 
 def mean(number_list):
@@ -34,14 +36,21 @@ def standardDeviation(number_list):
     return math.sqrt(variance)
 
 
-def differentiate(func, h=0.00001):
-    """
-    Error prone after 2nd degree
-    :param func: function to differentiate
-    :param h: @type float, step size
-    :return: function
-    """
-    def derivative(x):
-        return (func(x + h) - func(x)) / h
 
-    return derivative
+def loadCSV(filename):
+    lines = csv.reader(open(filename, 'r'))
+    data_set = []
+    for line in lines:
+        data_set.append([float(x) for x in line])
+    return data_set
+
+
+def splitDataSet(data_set, ratio):
+    data_set = list(data_set)
+    train_size = int(len(data_set) * ratio)
+    training_set = []
+    for _ in range(train_size):
+        training_set.append(data_set.pop(data_set.index(random.choice(data_set))))
+    return training_set, data_set
+
+

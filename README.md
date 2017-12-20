@@ -38,10 +38,8 @@ The data is assumed to contain the classification/label/class as the last **numb
         
         prediction_list.append(prediction)
 
-    print("Accuracy: ",nb.getAccuracy(prediction_list,test_set))
-   
- ```
-
+    print("Accuracy: ",nb.getAccuracy(prediction_list,test_set))```
+    
 ### Linear Regression
 
 * Sample
